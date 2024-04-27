@@ -1,16 +1,18 @@
 package com.meeting.plannner.service.mapping;
 
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import static com.meeting.plannner.helper.Helper.getType;
+
 import com.meeting.plannner.repository.dao.RoomData;
 import com.meeting.plannner.service.model.Room;
 import com.meeting.plannner.service.model.RoomType;
 
-@Mapper
+@Mapper(componentModel = "spring", uses = RoomMapper.class, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface RoomMapper {
 
 	RoomMapper INST = Mappers.getMapper(RoomMapper.class);

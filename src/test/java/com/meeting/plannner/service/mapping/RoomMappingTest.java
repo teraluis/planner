@@ -1,4 +1,4 @@
-package com.meeting.plannner.service.model.mapping;
+package com.meeting.plannner.service.mapping;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

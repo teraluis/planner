@@ -8,6 +8,9 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
+import com.meeting.plannner.service.model.Room;
+import com.meeting.plannner.service.model.RoomType;
+
 class RoomTest {
 
 	public static LocalDate MONDAY = LocalDate.of(2024, 4, 22);

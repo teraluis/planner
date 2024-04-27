@@ -1,4 +1,4 @@
-package com.meeting.plannner.service.model.impl;
+package com.meeting.plannner.service.impl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
