@@ -3,6 +3,9 @@ package com.meeting.plannner.helper;
 import com.meeting.plannner.repository.dao.RoomData;
 import com.meeting.plannner.service.model.RoomType;
 
+/**
+ * this is a helper for the planner
+ */
 public class Helper {
 	
 	public static RoomType getType(RoomData room) {

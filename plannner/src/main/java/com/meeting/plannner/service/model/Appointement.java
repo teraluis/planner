@@ -24,6 +24,7 @@ public class Appointement {
 	public Room getRoom() {
 		return room;
 	}
+	
 	public void setRoom(Room room) {
 		this.room = room;
 	}
@@ -33,6 +34,5 @@ public class Appointement {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
 	
 }

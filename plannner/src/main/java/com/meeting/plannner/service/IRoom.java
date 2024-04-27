@@ -9,7 +9,7 @@ public interface IRoom {
 
 	public List<Room> getAll();
 	
-	public List<Room> getBy(String type, int personnes, int hour);
+	public List<Room> getBy(String type, int personnes);
 	
 	public void book(String roomName, int hour, int personnes, LocalDate date) throws Exception; 
 }

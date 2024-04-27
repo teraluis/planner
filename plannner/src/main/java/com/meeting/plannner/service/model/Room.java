@@ -70,5 +70,14 @@ public class Room {
 		this.type = type;
 	}
 
+	public Integer getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
+	}
+
+	
 	
 }
