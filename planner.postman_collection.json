@@ -152,6 +152,72 @@
 			]
 		},
 		{
+			"name": "swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/metting-room/swagger-ui.html",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"metting-room",
+						"swagger-ui.html"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "room",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/metting-room/rooms/E1001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"metting-room",
+								"rooms",
+								"E1001"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Apr 2024 11:03:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"bookings\": {}\n}"
+				}
+			]
+		},
+		{
 			"name": "book",
 			"request": {
 				"method": "POST",

@@ -18,14 +18,21 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 1. Clonez le dépôt : `git clone https://github.com/teraluis/planner.git`
 2. Naviguez dans le répertoire du projet : `cd planner`
 
-4. Construisez l'application : `mvn clean install`
+4. Construisez l'application : `mvn update`, `mvn clean install`
 
-## Lancement
 
-- Lancez l'application avec Spring Boot : `mvn spring-boot:run` ou via eclipse executez PlannerApplication.java
+## Generation du jar (optionel)
+- `java -jar` ou `mvn clean package` cela va generer un fichier jar sur target
+-  `cd planner/target`
+- `java -jar PlannnerStarter.jar`
+
+## Lancement Planner Starter
+- Lancez l'application avec Spring Boot : `mvn spring-boot:run`
 - Accédez à l'application via : `http://localhost:8080`
-- Accédez au swagger via : `http://localhost:8080/swagger-ui.html` ou `http://localhost:8080/api-docs`
-- Importez la collection postman qui se trouve à la racine du projet
+- Accédez au swagger JSON : `http://localhost:8080/v3/api-docs`
+- Accédez au swagger YML : `http://localhost:8080/api-docs.yaml`
+- Accédez au swagger ui: `http://localhost:8080/swagger-ui/index.html`
+- Importez la collection postman qui se trouve à la racine du projet si vous voulez tester l'application facielement
 
 ## Utilisation
 

@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import meeting.plannner.controller.dto.AppointmentDto;
 import meeting.plannner.controller.dto.ReservationForm;
 import meeting.plannner.controller.dto.RoomDto;
@@ -34,6 +36,11 @@ public class RoomController {
 	@Autowired
 	private RoomService roomService;
 	
+    @Operation(summary = "Get all meeting rooms", description = "Retrieve all meeting rooms based on given criteria")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Successfully retrieved meeting rooms"),
+        @ApiResponse(responseCode = "404", description = "Meeting rooms not found")
+    })
 	@GetMapping("/rooms")
 	public ResponseEntity<List<RoomDto>> rooms(@RequestParam(defaultValue = "RS") String type, 
 			@RequestParam(defaultValue = "3") int personnes, @RequestParam String date) {
