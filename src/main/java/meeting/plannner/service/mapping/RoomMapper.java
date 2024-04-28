@@ -9,7 +9,7 @@ import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import meeting.plannner.helper.Helper;
-import meeting.plannner.repository.dao.RoomData;
+import meeting.plannner.repository.entity.RoomData;
 import meeting.plannner.service.model.Room;
 import meeting.plannner.service.model.RoomType;
 

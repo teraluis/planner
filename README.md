@@ -11,6 +11,7 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 
 - Java 17
 - Maven
+- Postman
 
 ## Configuration
 
@@ -23,10 +24,11 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 
 - Lancez l'application avec Spring Boot : `mvn spring-boot:run`
 - Accédez à l'application via : `http://localhost:8080`
+- Importez la collection postman à la racine du projet
 
 ## Utilisation
 
-Pour réserver une salle, consultez le swagger d'application
+Pour réserver une salle, consultez le swagger d'application ou la collection postman à la racine du projet.
 
 ## Contribution
 

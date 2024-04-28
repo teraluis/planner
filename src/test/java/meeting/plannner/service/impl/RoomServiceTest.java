@@ -15,8 +15,8 @@ import org.mockito.MockitoAnnotations;
 
 import meeting.plannner.repository.AppointmentRepository;
 import meeting.plannner.repository.RoomsRepository;
-import meeting.plannner.repository.dao.AppointmentData;
-import meeting.plannner.repository.dao.RoomData;
+import meeting.plannner.repository.entity.AppointmentData;
+import meeting.plannner.repository.entity.RoomData;
 import meeting.plannner.service.exceptions.RoomException;
 import meeting.plannner.service.model.Appointement;
 

@@ -1,22 +1,37 @@
-package meeting.plannner.service.model;
+package meeting.plannner.repository.entity;
 
-/**
- * Coupled meetings (RC) between colleagues on site and teleworking which require a board, a screen
-and an octopus.
- */
-public class RoomRc extends Room {
-	
+public class RoomData {
+
+	private String name;
+	private int capacite;
 	private boolean whiteBoard;
 	private boolean screen;
 	private boolean camera;
 	private boolean speaker;
 
-	public RoomRc(String name, int maxCapacity, boolean pandemic) {
-		super(name, maxCapacity, pandemic, RoomType.RC);
-		screen = true;
-		camera = false;
-		speaker = true;
-		whiteBoard = true;
+	public RoomData(String name, int capacite, boolean whiteBoard, boolean screen, boolean camera, boolean speaker) {
+		this.name = name;
+		this.capacite = capacite;
+		this.whiteBoard = whiteBoard;
+		this.screen = screen;
+		this.camera = camera;
+		this.speaker = speaker;
+	}
+
+	public int getCapacite() {
+		return capacite;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCapacite(int capacite) {
+		this.capacite = capacite;
 	}
 
 	public boolean isWhiteBoard() {
@@ -51,5 +66,4 @@ public class RoomRc extends Room {
 		this.speaker = speaker;
 	}
 
-	
 }

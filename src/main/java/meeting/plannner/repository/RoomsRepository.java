@@ -3,14 +3,17 @@ package meeting.plannner.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import meeting.plannner.repository.dao.RoomData;
+import org.springframework.stereotype.Repository;
 
-public class RoomsRepository {
+import meeting.plannner.repository.entity.RoomData;
 
-	public List<RoomData> getAll() {
-		final var rooms = new ArrayList<RoomData>();
-		
-		//tableau ecran camera pieuvre
+@Repository
+public class RoomsRepository  {
+
+	private static List<RoomData> rooms = new ArrayList<RoomData>();
+	
+	public List<RoomData> getAll() {		
+
 		rooms.add(new RoomData("E1001", 23, false, false, false, false));
 		rooms.add(new RoomData("E1002", 10, false, true, false, false));
 		rooms.add(new RoomData("E1003", 8, false, true, false, true));

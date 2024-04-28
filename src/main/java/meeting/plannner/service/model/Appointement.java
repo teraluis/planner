@@ -10,11 +10,15 @@ public class Appointement {
 
 	private Room room;
 	private LocalDate date;
+	private int hour;
+	private int persons;
 	
 	
-	public Appointement(Room room, LocalDate date) throws Exception {
+	public Appointement(Room room, LocalDate date, int hour, int persons) throws Exception {
 		this.room = room;
 		this.date = date;
+		this.hour = hour;
+		this.persons = persons;
 		if(date.getDayOfWeek().getValue() > 5) {
 			throw new AppointementException("You can not book in weekends");
 		}
@@ -33,5 +37,20 @@ public class Appointement {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
+
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+
+	public int getPersons() {
+		return persons;
+	}
+
+	public void setPersons(int persons) {
+		this.persons = persons;
+	}
 }

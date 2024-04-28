@@ -1,4 +1,4 @@
-package meeting.plannner.repository.dao;
+package meeting.plannner.repository.entity;
 
 import java.time.LocalDate;
 

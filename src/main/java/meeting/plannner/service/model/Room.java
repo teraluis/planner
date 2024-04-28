@@ -24,8 +24,7 @@ public class Room {
 		this.name = name;		
 		this.isPandemie = isPandemie;
 		this.type = type;
-		if(isPandemie) {
-			logger.info("is pademic day business rules change");
+		if(isPandemie) {			
 			this.capacity = (int) (maxCapacity * PERCENT);
 		} else {
 			this.capacity = maxCapacity;
@@ -40,6 +39,7 @@ public class Room {
 	 */
 	public boolean book(int hour, int persons) {		
 		final var bookable = hasCapacity(persons) && isOpen(hour) && isAvailable(hour);
+		logger.info("Booking room hour: {}h", hour);
 		if(bookable) 
 			bookings.put(hour, true);
 		

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import meeting.plannner.repository.dao.RoomData;
+import meeting.plannner.repository.entity.RoomData;
 import meeting.plannner.service.model.RoomType;
 
 class RoomMappingTest {

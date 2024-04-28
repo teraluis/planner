@@ -1,6 +1,6 @@
 package meeting.plannner.helper;
 
-import meeting.plannner.repository.dao.RoomData;
+import meeting.plannner.repository.entity.RoomData;
 import meeting.plannner.service.model.RoomType;
 
 /**

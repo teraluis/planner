@@ -6,8 +6,10 @@ import static org.springframework.http.ResponseEntity.ok;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,18 +43,17 @@ public class RoomController {
 	}
 	
 	@GetMapping("/rooms/{name}")
-	public ResponseEntity<RoomDto> appointements(@PathVariable String name) {
+	public ResponseEntity<RoomDto> room(@PathVariable String name) {
 		return ok(roomService.getAll().stream()
 				.map(RoomMappeur.INST::map)
 				.filter(r -> r.getName().equals(name))
 				.findFirst().orElseThrow());		
 	}
 	
-	@PostMapping("/rooms/:name/book")
+	@PostMapping(path = "/rooms/{name}/book", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AppointmentDto> book(@PathVariable String name, @RequestBody ReservationForm form) throws Exception {
 		
-		final var date = LocalDate.now();
-		
+		final var date = LocalDate.parse(form.getDate());
 		roomService.book(name, form.getHeure(), form.getPersonnes(), date);
 		
         URI location = ServletUriComponentsBuilder
@@ -60,7 +61,7 @@ public class RoomController {
                 .path("/{name}") 
                 .buildAndExpand(name)
                 .toUri(); 
-        
-		return created(location).body(new AppointmentDto(date, new RoomDto(name, form.getPersonnes())));
+                
+		return created(location).body(new AppointmentDto(date, new RoomDto(name, form.getPersonnes(), Map.of(form.getHeure(), true))));
 	}
 }
