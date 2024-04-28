@@ -73,11 +73,8 @@ public class RoomControllerTest {
 		final var heure = 10;
 		int personnes = 3;
 
-		final var form = new ReservationForm();
-		form.setDate(date);
-		form.setHeure(heure);
-		form.setPersonnes(personnes);
-
+		final var form = new ReservationForm(heure, personnes, date);
+		
 		doNothing().when(roomService).book(anyString(), anyInt(), anyInt(), any(LocalDate.class));
 
 		final var request = new MockHttpServletRequest();

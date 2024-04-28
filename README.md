@@ -22,9 +22,10 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 
 ## Lancement
 
-- Lancez l'application avec Spring Boot : `mvn spring-boot:run`
+- Lancez l'application avec Spring Boot : `mvn spring-boot:run` ou via eclipse executez PlannerApplication.java
 - Accédez à l'application via : `http://localhost:8080`
-- Importez la collection postman à la racine du projet
+- Accédez au swagger via : `http://localhost:8080/swagger-ui.html` ou `http://localhost:8080/api-docs`
+- Importez la collection postman qui se trouve à la racine du projet
 
 ## Utilisation
 
