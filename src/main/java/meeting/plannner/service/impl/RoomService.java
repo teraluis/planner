@@ -66,6 +66,11 @@ public class RoomService implements IRoom {
 		}
 	}
 	
+	@Override
+	public List<Room> getBy(String name, LocalDate date) {
+		return computedRooms(date).stream().filter(r -> r.getName().equals(name)).toList();
+	}
+	
 	/**
 	 * this method will populate the hours reservation for a room from database
 	 * @return

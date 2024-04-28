@@ -29,7 +29,7 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 ## Lancement Planner Starter
 - Lancez l'application avec Spring Boot : `mvn spring-boot:run`
 - Accédez à l'application via : `http://localhost:8080`
-- Accédez au swagger JSON : `http://localhost:8080/v3/api-docs`
+- Accédez au swagger JSON : `http://localhost:8080/api-docs`
 - Accédez au swagger YML : `http://localhost:8080/api-docs.yaml`
 - Accédez au swagger ui: `http://localhost:8080/swagger-ui/index.html`
 - Importez la collection postman qui se trouve à la racine du projet si vous voulez tester l'application facielement

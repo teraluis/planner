@@ -51,8 +51,8 @@ public class RoomController {
 	}
 	
 	@GetMapping("/rooms/{name}")
-	public ResponseEntity<RoomDto> room(@PathVariable String name) {
-		return ok(roomService.getAll().stream()
+	public ResponseEntity<RoomDto> room(@PathVariable String name, @RequestParam String date) {
+		return ok(roomService.getBy(name, LocalDate.parse(date)).stream()
 				.map(RoomMappeur.INST::map)
 				.filter(r -> r.getName().equals(name))
 				.findFirst().orElseThrow());		
@@ -70,6 +70,10 @@ public class RoomController {
                 .buildAndExpand(name)
                 .toUri(); 
                 
-		return created(location).body(new AppointmentDto(date, new RoomDto(name, form.getPersonnes(), Map.of(form.getHeure(), true))));
+		return created(location).body(new AppointmentDto(date, RoomDto.builder()
+				.name(name)
+				.personnes(form.getPersonnes())
+				.bookings(Map.of(form.getHeure(), true))
+				.build()));
 	}
 }

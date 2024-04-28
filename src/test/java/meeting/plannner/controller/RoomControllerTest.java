@@ -57,13 +57,13 @@ public class RoomControllerTest {
 	
 	@Test
 	public void testRoomFound() {
-        when(roomService.getAll()).thenReturn(List.of(new Room("E1", 0, true, RoomType.RS)));
+        when(roomService.getBy(anyString(), any(LocalDate.class))).thenReturn(List.of(new Room("E1", 0, true, RoomType.RS)));
 
-        final var response = roomController.room("E1");
+        final var response = roomController.room("E1", "2024-04-15");
 
         assertEquals(OK, response.getStatusCode());
         assertEquals("E1", response.getBody().getName());
-        verify(roomService).getAll();
+        verify(roomService).getBy(anyString(), any(LocalDate.class));
 	}
 
 	@Test

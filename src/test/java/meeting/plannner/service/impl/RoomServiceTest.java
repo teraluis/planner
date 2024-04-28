@@ -85,6 +85,17 @@ public class RoomServiceTest {
         assertEquals(3, roomsCall.get(0).getBookings().size());
         assertEquals(0, roomsCall.get(2).getBookings().size());
     }
+    
+    @Test
+    public void testGetByName() {
+    	
+        Mockito.when(roomsRepository.getAll()).thenReturn(rooms);
+        Mockito.when(appointmentRepository.getAll()).thenReturn(appointments);
+        
+        final var roomsCall = roomService.getBy("E1001", monday);
+
+        assertEquals(1, roomsCall.size());
+    }
 
     @Test
     public void testBookFriday() throws Exception {
