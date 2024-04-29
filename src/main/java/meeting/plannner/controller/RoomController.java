@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,7 +41,6 @@ public class RoomController {
     @Operation(summary = "Get all meeting rooms", description = "Retrieve all meeting rooms based on given criteria")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Successfully retrieved meeting rooms"),
-        @ApiResponse(responseCode = "404", description = "Meeting rooms not found")
     })
 	@GetMapping("/rooms")
 	public ResponseEntity<List<RoomDto>> rooms(@RequestParam(defaultValue = "RS") String type, 
@@ -50,30 +51,43 @@ public class RoomController {
 				.toList());		
 	}
 	
+    @Operation(summary = "Get meeting rooms", description = "Retrieve meeting room by name and date")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Successfully retrieved meeting room"),
+        @ApiResponse(responseCode = "404", description = "meeting room not found"),
+    })
 	@GetMapping("/rooms/{name}")
 	public ResponseEntity<RoomDto> room(@PathVariable String name, @RequestParam String date) {
 		return ok(roomService.getBy(name, LocalDate.parse(date)).stream()
 				.map(RoomMappeur.INST::map)
 				.filter(r -> r.getName().equals(name))
-				.findFirst().orElseThrow());		
+				.findFirst()
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Room not found")));		
 	}
 	
+    @Operation(summary = "Book a room", description = "Book a room name in specific date")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Successfully booked room"),
+        @ApiResponse(responseCode = "400", description = "Can't book room"),
+    })
 	@PostMapping(path = "/rooms/{name}/book", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AppointmentDto> book(@PathVariable String name, @RequestBody ReservationForm form) throws Exception {
-		
-		final var date = LocalDate.parse(form.getDate());
-		roomService.book(name, form.getHeure(), form.getPersonnes(), date);
-		
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest() 
-                .path("/{name}") 
-                .buildAndExpand(name)
-                .toUri(); 
-                
-		return created(location).body(new AppointmentDto(date, RoomDto.builder()
-				.name(name)
-				.personnes(form.getPersonnes())
-				.bookings(Map.of(form.getHeure(), true))
-				.build()));
+	public ResponseEntity<AppointmentDto> book(@PathVariable String name, @RequestBody ReservationForm form) {	
+		try {
+			final var date = LocalDate.parse(form.getDate());
+			roomService.book(name, form.getHeure(), form.getPersonnes(), date);
+	        URI location = ServletUriComponentsBuilder
+	                .fromCurrentRequest() 
+	                .path("/{name}") 
+	                .buildAndExpand(name)
+	                .toUri(); 
+	                
+			return created(location).body(new AppointmentDto(date, RoomDto.builder()
+					.name(name)
+					.personnes(form.getPersonnes())
+					.bookings(Map.of(form.getHeure(), true))
+					.build()));
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "You can't book this room");
+		}		
 	}
 }

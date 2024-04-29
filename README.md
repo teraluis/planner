@@ -4,7 +4,7 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 
 ## Fonctionnalités
 
-- **Réservation de salles** : Permet aux utilisateurs de réserver une salle pour des créneaux d'une heure entre 8h00-18h.
+- **Réservation de salles** : Permet aux utilisateurs de réserver une salle pour des créneaux d'une heure entre 8h00-18h en respectant les normes sanitaires.
 - **Gestion des capacités** : Les capacités des salles sont ajustées en fonction des directives sanitaires pour assurer la distanciation sociale.
 
 ## Prérequis
