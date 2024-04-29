@@ -1,10 +1,12 @@
 package meeting.plannner.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpStatus.OK;
@@ -20,9 +22,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.server.ResponseStatusException;
 
 import meeting.plannner.controller.dto.ReservationForm;
 import meeting.plannner.service.impl.RoomService;
@@ -90,5 +94,25 @@ public class RoomControllerTest {
 
 		assertEquals(expectedUri, response.getHeaders().getLocation());
 		verify(roomService).book(name, heure, personnes, LocalDate.parse(date));
+	}
+	
+	@Test
+	public void testBookRoomBadRequest() throws Exception {
+		final var name = "E1001";
+		final var date = "2024-04-30";
+		final var heure = 10;
+		int personnes = 3;
+
+		final var form = new ReservationForm(heure, personnes, date);
+		
+		 doThrow(new RuntimeException("You can't book this room"))
+	        .when(roomService).book(anyString(), anyInt(), anyInt(), any(LocalDate.class));
+
+		final var request = new MockHttpServletRequest();
+		request.setRequestURI("/meeting-room/rooms/" + name + "/book");
+		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+
+		final var exception = assertThrows(ResponseStatusException.class, () -> roomController.book(name, form));
+		assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode(), "Expected HTTP status 400 Bad Request");
 	}
 }
