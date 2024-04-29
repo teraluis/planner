@@ -1,6 +1,6 @@
 package meeting.plannner.controller.dto;
 
-import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,6 +21,6 @@ public class RoomDto {
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String type;
 	@JsonProperty("bookings")
-	private Map<Integer, Boolean> bookings;
+	private Set<Integer> bookings;
 
 }

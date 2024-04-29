@@ -6,7 +6,7 @@ import static org.springframework.http.ResponseEntity.ok;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -84,7 +84,7 @@ public class RoomController {
 			return created(location).body(new AppointmentDto(date, RoomDto.builder()
 					.name(name)
 					.personnes(form.getPersonnes())
-					.bookings(Map.of(form.getHeure(), true))
+					.bookings(Set.of(form.getHeure()))
 					.build()));
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "You can't book this room");
