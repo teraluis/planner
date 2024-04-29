@@ -22,6 +22,8 @@ public interface RoomMapper {
     @Mapping(target = "capacity", ignore = true)
     @Mapping(target = "maxCapacity", source = "capacite")
     @Mapping(target = "type", source = "source", qualifiedByName = "computeRoomType")
+    @Mapping(target = "bookings", ignore = true)
+    @Mapping(target = "pandemie", ignore = true)
     Room map(RoomData source);
 
     @Named("computeRoomType")
