@@ -9,6 +9,42 @@
 	"item": [
 		{
 			"name": "rooms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    \r",
+							"    responseData.forEach((room) => {\r",
+							"        pm.expect(room).to.have.property('name');\r",
+							"        pm.expect(room).to.have.property('personnes');\r",
+							"        pm.expect(room).to.have.property('type');\r",
+							"        pm.expect(room).to.have.property('bookings');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"  pm.expect(pm.response).to.have.jsonBody;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -85,146 +121,21 @@
 			]
 		},
 		{
-			"name": "room",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/metting-room/rooms/E1001?date=2024-04-22",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"metting-room",
-						"rooms",
-						"E1001"
-					],
-					"query": [
-						{
-							"key": "date",
-							"value": "2024-04-22"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "room",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/metting-room/rooms/E1001",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"metting-room",
-								"rooms",
-								"E1001"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Sun, 28 Apr 2024 11:03:48 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"bookings\": {}\n}"
-				}
-			]
-		},
-		{
-			"name": "swagger",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api-docs",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api-docs"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "room",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/metting-room/rooms/E1001",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"metting-room",
-								"rooms",
-								"E1001"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Sun, 28 Apr 2024 11:03:48 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"bookings\": {}\n}"
-				}
-			]
-		},
-		{
 			"name": "book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 400]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -323,6 +234,200 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"room\": {\n        \"name\": \"E1001\",\n        \"personnes\": 3,\n        \"bookings\": {\n            \"12\": true\n        }\n    },\n    \"time\": \"2024-04-22\"\n}"
+				}
+			]
+		},
+		{
+			"name": "room",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.property('name');\r",
+							"    pm.expect(responseData).to.have.property('personnes');\r",
+							"    pm.expect(responseData).to.have.property('type');\r",
+							"    pm.expect(responseData).to.have.property('bookings');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Bookings contains a booking for 12h\",() => {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.bookings).to.be.an('object');\r",
+							"    pm.expect(responseData.bookings).to.include.keys('9', '12', '15', '17');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Bookings should not be empty\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  pm.expect(responseData.bookings).to.exist.and.to.not.be.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/metting-room/rooms/E1001?date=2024-04-22",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"metting-room",
+						"rooms",
+						"E1001"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-04-22"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "room",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/metting-room/rooms/E1001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"metting-room",
+								"rooms",
+								"E1001"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Apr 2024 11:03:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"bookings\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "swagger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api-docs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "room",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/metting-room/rooms/E1001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"metting-room",
+								"rooms",
+								"E1001"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Apr 2024 11:03:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"bookings\": {}\n}"
 				}
 			]
 		}

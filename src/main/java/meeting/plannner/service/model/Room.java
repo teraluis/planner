@@ -24,11 +24,7 @@ public class Room {
 		this.name = name;		
 		this.isPandemie = isPandemie;
 		this.type = type;
-		if(isPandemie) {			
-			this.capacity = (int) (maxCapacity * PERCENT);
-		} else {
-			this.capacity = maxCapacity;
-		}		
+		this.capacity = isPandemie? (int) (maxCapacity * PERCENT): maxCapacity;		
 	}
 
 	/**
