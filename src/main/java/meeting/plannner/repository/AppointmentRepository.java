@@ -21,10 +21,12 @@ public class AppointmentRepository {
 	public List<AppointmentData> getAll() {
 		final var rooms = roomsRepository.getAll();
 		final var monday = LocalDate.of(2024, 4, 22);
-
-		appointments.add(new AppointmentData(rooms.get(0), monday, 9, 3));
-		appointments.add(new AppointmentData(rooms.get(0), monday, 15, 3));
-		appointments.add(new AppointmentData(rooms.get(0), monday, 17, 3));
+		
+		if(appointments.isEmpty()) {
+			appointments.add(new AppointmentData(rooms.get(0), monday, 9, 3));
+			appointments.add(new AppointmentData(rooms.get(0), monday, 15, 3));
+			appointments.add(new AppointmentData(rooms.get(0), monday, 17, 3));
+		}
 
 		return appointments;
 	}
