@@ -7,18 +7,23 @@ Cette application est conçue pour gérer la réservation de salles en tenant co
 - **Réservation de salles** : Permet aux utilisateurs de réserver une salle pour des créneaux d'une heure entre 8h00-18h en respectant les normes sanitaires.
 - **Gestion des capacités** : Les capacités des salles sont ajustées en fonction des directives sanitaires pour assurer la distanciation sociale.
 
+### Régles sanitaires
+
+- L'utilisateur ne peut pas réserver une salle qui a été réservé l'heure précédente ou l'heure suivante.
+- Les capacités maximales correspondent à **70%** de la capacité de la salle.
+- L'utilisateur ne peut réserver les salles de réunion que par des créneaux d'une heure.
+
 ## Prérequis
 
 - Java 17
 - Maven
-- Postman
+- Postman pour consulter la collection
 
 ## Configuration
 
 1. Clonez le dépôt : `git clone https://github.com/teraluis/planner.git`
 2. Naviguez dans le répertoire du projet : `cd planner`
-
-4. Construisez l'application : `mvn update`, `mvn clean install`
+3. Construisez l'application : `mvn update`, `mvn clean install`
 
 
 ## Generation du jar (optionel)
