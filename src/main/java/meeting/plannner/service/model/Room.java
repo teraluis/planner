@@ -61,44 +61,4 @@ public class Room {
 		return !bookings.containsKey(hour);
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public RoomType getType() {
-		return type;
-	}
-
-	public void setType(RoomType type) {
-		this.type = type;
-	}
-
-	public Integer getCapacity() {
-		return capacity;
-	}
-
-	public void setCapacity(Integer capacity) {
-		this.capacity = capacity;
-	}
-
-	public Map<Integer, Boolean> getBookings() {
-		return bookings;
-	}
-
-	public void setBookings(Map<Integer, Boolean> bookings) {
-		this.bookings = bookings;
-	}
-
-	public boolean isPandemie() {
-		return isPandemie;
-	}
-
-	public void setPandemie(boolean isPandemie) {
-		this.isPandemie = isPandemie;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 }
