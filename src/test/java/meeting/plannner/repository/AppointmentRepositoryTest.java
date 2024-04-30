@@ -28,8 +28,8 @@ class AppointmentRepositoryTest {
 	@BeforeEach
 	public void setup() {
 		rooms = new ArrayList<>();
-		rooms.add(new RoomData("", 0, false, false, false, false));
-		rooms.add(new RoomData("", 0, false, false, false, false));
+		rooms.add(new RoomData((long) 1, "", 5, false, false, false, false, null));
+		rooms.add(new RoomData((long) 2, "", 2, false, false, false, false, null));
 		MockitoAnnotations.openMocks(this);
 	}
 	

@@ -40,34 +40,32 @@ public class RoomServiceTest {
     public void setup() {
 	    rooms = new ArrayList<RoomData>();
 		
-		rooms.add(new RoomData("E1001", 23, false, false, false, false));
-		rooms.add(new RoomData("E1002", 10, false, true, false, false));
-		rooms.add(new RoomData("E1003", 8, false, true, false, true));
-		rooms.add(new RoomData("E1004", 4, true, false, false, false));
-		
-		rooms.add(new RoomData("E2001", 4, false, false, false, false));
-		rooms.add(new RoomData("E2002", 15, false, true, true, false));
-		rooms.add(new RoomData("E2003", 7, false, false, false, false));
-		rooms.add(new RoomData("E2004", 9, true, false, false, false));
-		
-		rooms.add(new RoomData("E3001", 13, false, true, true, true));
-		rooms.add(new RoomData("E3002", 8, false, false, false, false));
-		rooms.add(new RoomData("E3003", 9, false, true, false, true));
-		rooms.add(new RoomData("E3004", 4, false, false, false, false));
+        rooms.add(new RoomData((long) 1, "E1001", 23, false, false, false, false, appointments));
+        rooms.add(new RoomData((long) 2,"E1002", 10, false, true, false, false, appointments));
+        rooms.add(new RoomData((long) 3, "E1003", 8, false, true, false, true, appointments));
+        rooms.add(new RoomData((long) 4, "E1004", 4, true, false, false, false, appointments));
+        rooms.add(new RoomData((long) 5, "E2001", 4, false, false, false, false, appointments));
+        rooms.add(new RoomData((long) 6,"E2002", 15, false, true, true, false, appointments));
+        rooms.add(new RoomData((long) 7,"E2003", 7, false, false, false, false, appointments));
+        rooms.add(new RoomData((long) 8,"E2004", 9, true, false, false, false, appointments));
+        rooms.add(new RoomData((long) 9,"E3001", 13, false, true, true, true, appointments));
+        rooms.add(new RoomData((long) 10,"E3002", 8, false, false, false, false, appointments));
+        rooms.add(new RoomData((long) 11,"E3003", 9, false, true, false, true, appointments));
+        rooms.add(new RoomData((long) 12,"E3004", 4, false, false, false, false, appointments));
 		
 		monday = LocalDate.of(2024, 4, 22);
 		
 		appointments = new ArrayList<AppointmentData>();
 		
 		//ROOM 0
-		appointments.add(new AppointmentData(rooms.get(0), monday, 9, 5));
-		appointments.add(new AppointmentData(rooms.get(0), monday, 13, 8));
-		appointments.add(new AppointmentData(rooms.get(0), monday, 17, 10));
+		appointments.add(new AppointmentData((long) 1, monday, 9, 5, rooms.get(0)));
+		appointments.add(new AppointmentData((long) 2, monday, 13, 8, rooms.get(0)));
+		appointments.add(new AppointmentData((long) 3, monday, 17, 10, rooms.get(0)));
 		
 		//ROOM 1
-		appointments.add(new AppointmentData(rooms.get(1), monday, 9, 5));
-		appointments.add(new AppointmentData(rooms.get(1), monday, 14, 5));
-		appointments.add(new AppointmentData(rooms.get(1), monday, 16, 5));
+		appointments.add(new AppointmentData((long) 1, monday, 9, 5, rooms.get(1)));
+		appointments.add(new AppointmentData((long) 2, monday, 14, 5, rooms.get(1)));
+		appointments.add(new AppointmentData((long) 3, monday, 16, 5, rooms.get(1)));
 		
         MockitoAnnotations.openMocks(this);
     }

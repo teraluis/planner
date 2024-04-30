@@ -23,9 +23,9 @@ public class AppointmentRepository {
 		final var monday = LocalDate.of(2024, 4, 22);
 		
 		if(appointments.isEmpty()) {
-			appointments.add(new AppointmentData(rooms.get(0), monday, 9, 3));
-			appointments.add(new AppointmentData(rooms.get(0), monday, 15, 3));
-			appointments.add(new AppointmentData(rooms.get(0), monday, 17, 3));
+			appointments.add(new AppointmentData((long) 1, monday, 9, 3, rooms.get(0)));
+			appointments.add(new AppointmentData((long) 2, monday, 15, 3, rooms.get(0)));
+			appointments.add(new AppointmentData((long) 3, monday, 17, 3, rooms.get(0)));
 		}
 
 		return appointments;
@@ -34,7 +34,7 @@ public class AppointmentRepository {
 	public void add(Appointement a) {	
 		final var room = roomsRepository.getAll().stream().filter(r -> a.getRoom().getName().equals(r.getName())).findFirst();
 		room.ifPresent(r -> {
-			appointments.add(new AppointmentData(r, a.getDate(), a.getHour(), a.getPersons()));		
+			appointments.add(new AppointmentData((long) 4, a.getDate(), a.getHour(), a.getPersons(), r));		
 		});				
 	}
 }
