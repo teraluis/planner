@@ -1,16 +1,16 @@
 package meeting.plannner.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import meeting.plannner.repository.RoomsRepository;
-
 class RoomRepositoryTest {
-
+	
+	RoomsRepository roomRepository;
+	
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() {
 	}
 
 	@Test

@@ -12,7 +12,7 @@ class RoomMappingTest {
 
 	@Test
 	void test() {
-		final var data = new RoomData("room1", 20, false, false, false, false);
+		final var data = new RoomData((long) 1, "room1", 20, false, false, false, false, null);
 		final var room = RoomMapper.INST.map(data);
 		
 		assertEquals("room1", room.getName());

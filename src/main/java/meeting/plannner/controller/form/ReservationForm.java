@@ -1,4 +1,4 @@
-package meeting.plannner.controller.dto;
+package meeting.plannner.controller.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

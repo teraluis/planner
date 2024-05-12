@@ -86,7 +86,7 @@ public class RoomService implements IRoom {
 					.toList();	
 			
 			appointmentsRoom.forEach(ar -> {
-				room.book(ar.getHour(), ar.getPersonnes());
+				room.book(ar.getHeure(), ar.getPersonnes());
 			});
 			
 			return room;
