@@ -1,4 +1,4 @@
-package meeting.plannner.repository;
+package meeting.plannner.repository.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

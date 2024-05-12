@@ -28,7 +28,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.server.ResponseStatusException;
 
-import meeting.plannner.controller.dto.ReservationForm;
+import meeting.plannner.controller.form.ReservationForm;
 import meeting.plannner.service.impl.RoomService;
 import meeting.plannner.service.model.Room;
 import meeting.plannner.service.model.RoomType;

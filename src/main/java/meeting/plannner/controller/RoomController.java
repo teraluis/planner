@@ -26,8 +26,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import meeting.plannner.controller.dto.AppointmentDto;
-import meeting.plannner.controller.dto.ReservationForm;
 import meeting.plannner.controller.dto.RoomDto;
+import meeting.plannner.controller.form.ReservationForm;
 import meeting.plannner.controller.mapping.RoomMappeur;
 import meeting.plannner.service.impl.RoomService;
 

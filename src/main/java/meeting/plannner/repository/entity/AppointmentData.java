@@ -20,7 +20,7 @@ public class AppointmentData {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;	
 	private LocalDate date;
-	private int hour;
+	private int heure;
 	private int personnes;
 	
 	@ManyToOne

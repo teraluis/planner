@@ -104,7 +104,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 28 Apr 2024 11:03:21 GMT"
+							"value": "Mon, 29 Apr 2024 16:43:18 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -116,7 +116,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"name\": \"E1001\",\n        \"personnes\": 16,\n        \"bookings\": {\n            \"9\": true,\n            \"15\": true,\n            \"17\": true\n        }\n    },\n    {\n        \"name\": \"E1002\",\n        \"personnes\": 7,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E1003\",\n        \"personnes\": 5,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E2002\",\n        \"personnes\": 10,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E2003\",\n        \"personnes\": 4,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E3002\",\n        \"personnes\": 5,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E3003\",\n        \"personnes\": 6,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E1001\",\n        \"personnes\": 16,\n        \"bookings\": {\n            \"9\": true,\n            \"15\": true,\n            \"17\": true\n        }\n    },\n    {\n        \"name\": \"E1002\",\n        \"personnes\": 7,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E1003\",\n        \"personnes\": 5,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E2002\",\n        \"personnes\": 10,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E2003\",\n        \"personnes\": 4,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E3002\",\n        \"personnes\": 5,\n        \"bookings\": {}\n    },\n    {\n        \"name\": \"E3003\",\n        \"personnes\": 6,\n        \"bookings\": {}\n    }\n]"
+					"body": "[\n    {\n        \"name\": \"E1001\",\n        \"personnes\": 16,\n        \"type\": \"RS\",\n        \"bookings\": [\n            17,\n            9,\n            12,\n            15\n        ]\n    },\n    {\n        \"name\": \"E1002\",\n        \"personnes\": 7,\n        \"type\": \"RS\",\n        \"bookings\": []\n    },\n    {\n        \"name\": \"E1003\",\n        \"personnes\": 5,\n        \"type\": \"RS\",\n        \"bookings\": []\n    },\n    {\n        \"name\": \"E2002\",\n        \"personnes\": 10,\n        \"type\": \"RS\",\n        \"bookings\": []\n    },\n    {\n        \"name\": \"E2003\",\n        \"personnes\": 4,\n        \"type\": \"RS\",\n        \"bookings\": []\n    },\n    {\n        \"name\": \"E3002\",\n        \"personnes\": 5,\n        \"type\": \"RS\",\n        \"bookings\": []\n    },\n    {\n        \"name\": \"E3003\",\n        \"personnes\": 6,\n        \"type\": \"RS\",\n        \"bookings\": []\n    }\n]"
 				}
 			]
 		},
@@ -176,7 +176,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"heure\": 12,\r\n    \"personnes\": 3,\r\n    \"date\": \"2024-04-22\"\r\n}",
+							"raw": "{\r\n    \"heure\": 18,\r\n    \"personnes\": 3,\r\n    \"date\": \"2024-04-23\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -221,7 +221,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 28 Apr 2024 11:15:51 GMT"
+							"value": "Mon, 29 Apr 2024 19:27:46 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -233,7 +233,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"room\": {\n        \"name\": \"E1001\",\n        \"personnes\": 3,\n        \"bookings\": {\n            \"12\": true\n        }\n    },\n    \"time\": \"2024-04-22\"\n}"
+					"body": "{\n    \"date\": \"2024-04-23\",\n    \"room\": {\n        \"name\": \"E1001\",\n        \"personnes\": 3,\n        \"bookings\": [\n            18\n        ]\n    }\n}"
 				}
 			]
 		},
@@ -263,7 +263,7 @@
 							"\r",
 							"pm.test(\"Bookings contains a booking for 12h\",() => {\r",
 							"    const responseData = pm.response.json();\r",
-							"    pm.expect(responseData.bookings).to.contains(12);\r",
+							"    pm.expect(responseData.bookings).to.contains(9);\r",
 							"});\r",
 							"\r",
 							"\r",
@@ -307,7 +307,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/metting-room/rooms/E1001",
+							"raw": "localhost:8080/metting-room/rooms/E1001?date=2024-04-22",
 							"host": [
 								"localhost"
 							],
@@ -316,6 +316,12 @@
 								"metting-room",
 								"rooms",
 								"E1001"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-04-22"
+								}
 							]
 						}
 					},
@@ -333,7 +339,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 28 Apr 2024 11:03:48 GMT"
+							"value": "Mon, 29 Apr 2024 16:43:44 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -345,7 +351,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"bookings\": {}\n}"
+					"body": "{\n    \"name\": \"E1001\",\n    \"personnes\": 16,\n    \"type\": \"RS\",\n    \"bookings\": [\n        17,\n        9,\n        12,\n        15\n    ]\n}"
 				}
 			]
 		},
