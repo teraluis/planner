@@ -10,7 +10,7 @@ import meeting.plannner.repository.entity.RoomData;
 
 @Repository
 public class RoomsRepository  {
-
+	
 	private static final List<RoomData> rooms;
 	
     static {
@@ -29,7 +29,7 @@ public class RoomsRepository  {
         rooms.add(new RoomData((long) 12,"E3004", 4, false, false, false, false, null));
     }
 	
-    public List<RoomData> getAll() {      
+    public List<RoomData> getAll() {       
         return Collections.unmodifiableList(rooms);
     }
 }
