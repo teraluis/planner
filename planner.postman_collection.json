@@ -261,7 +261,7 @@
 							"});\r",
 							"\r",
 							"\r",
-							"pm.test(\"Bookings contains a booking for 12h\",() => {\r",
+							"pm.test(\"Bookings contains a booking for 9h\",() => {\r",
 							"    const responseData = pm.response.json();\r",
 							"    pm.expect(responseData.bookings).to.contains(9);\r",
 							"});\r",
