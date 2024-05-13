@@ -24,7 +24,7 @@ public class SwaggerConfig {
         logger.info("Configuring GroupedOpenApi for meeting-planner API");
 
         GroupedOpenApi api = GroupedOpenApi.builder()
-                .group("meeting-planner")
+                .group("meeting-plannner")
                 .packagesToExclude("meeting.plannner.repository", "meeting.plannner.service")
                 .packagesToScan("meeting.plannner.controller")
                 .build();

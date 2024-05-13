@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,8 @@ import meeting.plannner.controller.dto.RoomDto;
 import meeting.plannner.controller.form.ReservationForm;
 import meeting.plannner.controller.mapping.RoomMappeur;
 import meeting.plannner.service.impl.RoomService;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Content;
 
 @RestController
 @RequestMapping("/metting-room") 
@@ -42,7 +45,7 @@ public class RoomController {
 	
     @Operation(summary = "Get all meeting rooms", description = "Retrieve all meeting rooms based on given criteria")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successfully retrieved meeting rooms"),
+        @ApiResponse(responseCode = "200", description = "Successfully retrieved meeting rooms")
     })
 	@GetMapping("/rooms")
 	public ResponseEntity<List<RoomDto>> rooms(@RequestParam(defaultValue = "RS") String type, 
@@ -56,7 +59,10 @@ public class RoomController {
     @Operation(summary = "Get meeting rooms", description = "Retrieve meeting room by name and date")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Successfully retrieved meeting room"),
-        @ApiResponse(responseCode = "404", description = "meeting room not found"),
+        @ApiResponse(responseCode = "404", description = "meeting room not found", 
+		content = {@Content(mediaType = "application/json", 
+        schema = @Schema(implementation = HttpStatus.class))
+		}),
     })
 	@GetMapping("/rooms/{name}")
 	public ResponseEntity<RoomDto> room(@PathVariable String name, @RequestParam String date) {
@@ -70,8 +76,11 @@ public class RoomController {
     @Operation(summary = "Book a room", description = "Book a room name in specific date")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Successfully booked room"),
-        @ApiResponse(responseCode = "400", description = "Can't book room"),
-    })
+        @ApiResponse(responseCode = "400", description = "Can't book room", 
+        		content = {@Content(mediaType = "application/json", 
+                schema = @Schema(implementation = HttpStatus.class))
+        		}),
+    })    
 	@PostMapping(path = "/rooms/{name}/book", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AppointmentDto> book(@PathVariable String name, @RequestBody ReservationForm form) {	
 		try {
