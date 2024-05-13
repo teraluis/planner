@@ -5,8 +5,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,17 +15,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(description = "Room of building")
+@Schema(description = "Room of building")
 public class RoomDto {
 
-	@ApiModelProperty(notes = "room name", example = "E1001")
+	@Schema(description = "room name", example = "E1001")
 	private String name;
-	@ApiModelProperty(notes = "number of persons in metting", example = "5")
+	@Schema(description = "number of persons in metting", example = "5")
 	private Integer personnes;
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String type;
 	@JsonProperty("bookings")
-	@ApiModelProperty(notes = "hours already booked", example = "[9, 13]")
+	@Schema(description = "hours already booked", example = "[9, 13]")
 	private Set<Integer> bookings;
 
 }

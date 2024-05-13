@@ -25,6 +25,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import meeting.plannner.controller.dto.AppointmentDto;
 import meeting.plannner.controller.dto.RoomDto;
 import meeting.plannner.controller.form.ReservationForm;
@@ -33,6 +34,7 @@ import meeting.plannner.service.impl.RoomService;
 
 @RestController
 @RequestMapping("/metting-room") 
+@Tag(name = "Meeting Room", description = "API for managing meeting rooms")
 public class RoomController {
 	
 	@Autowired

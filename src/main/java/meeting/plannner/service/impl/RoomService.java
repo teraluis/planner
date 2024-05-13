@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import meeting.plannner.repository.AppointmentRepository;
 import meeting.plannner.repository.RoomsRepository;
 import meeting.plannner.service.IRoom;
@@ -17,6 +18,7 @@ import meeting.plannner.service.model.Appointement;
 import meeting.plannner.service.model.Room;
 
 @Service
+@Hidden
 public class RoomService implements IRoom {
 	
 	@Autowired
